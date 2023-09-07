@@ -1,15 +1,20 @@
 <x-layout>
+
     <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex-col w-3/4">
-            <div class="text-center lg:text-top mt-24">
-                <h1 class="text-5xl font-bold">Fysikbasserne Application Form</h1>
-                <p class="py-4">Thank you for considering Fysikbasserne as your future home! Make sure you have made
-                    yourself familiar with our wowprogress post before applying.</p>
-            </div>
+            <form action="/forms/{{ $form->id }}">
+                <div class="text-center lg:text-top mt-24">
+                    <h1 class="text-5xl font-bold">{{ $form->character_name . ' - ' . $form->character_realm }}</h1>
+                    {{-- <p class="py-4">Thank you for considering Fysikbasserne as your future home! Make sure you have
+                        made
+                        yourself familiar with our wowprogress post before applying.</p> --}}
+                </div>
+            </form>
+
             <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                <div class="card-body">
-                    <form action="/forms/create" method="POST">
-                        @csrf
+                <form action="/dashboard/form/{{ $form->id }}">
+                    <div class="card-body">
+
                         {{-- Country , Age --}}
                         <table>
                             <tr>
@@ -18,11 +23,8 @@
                                         <label class="label">
                                             <span class="label-text text-[16px] text-white opacity-80">Country</span>
                                         </label>
-                                        <input type="text" name="country" value="{{ old('country') }}"
+                                        <input type="text" readonly name="country" value="{{ $form->country }}"
                                             class="input input-bordered" />
-                                        @error('country')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -30,11 +32,8 @@
                                         <label class="label">
                                             <span class="label-text text-[16px] text-white opacity-80">Age</span>
                                         </label>
-                                        <input type="text" name="age" value="{{ old('age') }}"
+                                        <input type="text" readonly name="age" value="{{ $form->age }}"
                                             class="input input-bordered" />
-                                        @error('age')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                             </tr>
@@ -49,11 +48,8 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Battle-net
                                                 tag</span>
                                         </label>
-                                        <input type="text" name="battle_net_tag" value="{{ old('battle_net_tag') }}"
-                                            class="input input-bordered" />
-                                        @error('battle_net_tag')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
+                                        <input type="text" readonly name="battle_net_tag"
+                                            value="{{ $form->battle_net_tag }}" class="input input-bordered" />
                                     </div>
                                 </td>
                                 <td>
@@ -62,11 +58,8 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Discord
                                                 tag</span>
                                         </label>
-                                        <input type="text" name="discord_tag" value="{{ old('discord_tag') }}"
-                                            class="input input-bordered " />
-                                        @error('discord_tag')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
+                                        <input type="text" readonly name="discord_tag"
+                                            value="{{ $form->discord_tag }}" class="input input-bordered " />
                                     </div>
                                 </td>
                             </tr>
@@ -81,11 +74,8 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Character
                                                 name</span>
                                         </label>
-                                        <input type="text" name="character_name" value="{{ old('character_name') }}"
-                                            class="input input-bordered" />
-                                        @error('character_name')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
+                                        <input type="text" readonly name="character_name"
+                                            value="{{ $form->character_name }}" class="input input-bordered" />
                                     </div>
                                 </td>
                                 <td>
@@ -93,11 +83,8 @@
                                         <label class="label">
                                             <span class="label-text text-[16px] text-white opacity-80">Realm</span>
                                         </label>
-                                        <input type="text" name="character_realm"
-                                            value="{{ old('character_realm') }}" class="input input-bordered" />
-                                        @error('character_realm')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
+                                        <input type="text" readonly name="character_realm"
+                                            value="{{ $form->character_realm }}" class="input input-bordered" />
                                     </div>
                                 </td>
                             </tr>
@@ -112,11 +99,9 @@
                                         <label class="label">
                                             <span class="label-text text-[16px] text-white opacity-80">Class</span>
                                         </label>
-                                        <input type="text" name="class" placeholder="Example: Warrior" value="{{ old('class') }}"
+                                        <input type="text" readonly name="class" placeholder="Example: Warrior"
+                                            value="{{ $form->class }}"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('class')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -124,11 +109,9 @@
                                         <label class="label">
                                             <span class="label-text text-[16px] text-white opacity-80">Spec</span>
                                         </label>
-                                        <input type="text" name="spec" placeholder="Example: Arms/Fury" value="{{ old('spec') }}"
+                                        <input type="text" readonly name="spec" placeholder="Example: Arms/Fury"
+                                            value="{{ $form->spec }}"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('spec')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                             </tr>
@@ -146,7 +129,7 @@
                                     </label>
                                 </td>
                                 <td>
-                                    <input type="checkbox" name="altToggle" id="altToggle"
+                                    <input type="checkbox" readonly name="altToggle" id="altToggle"
                                         class="toggle toggle-success ml-7 mt-2" />
                                 </td>
                             </div>
@@ -161,11 +144,8 @@
                                     in a raid
                                     encounter or VOD of you playing</span>
                             </label>
-                            <input type="text" name="ui_vod" value="{{ old('ui_vod') }}"
+                            <input type="text" readonly name="ui_vod" value="{{ $form->ui_vod }}"
                                 class="input input-bordered" />
-                            @error('ui_vod')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
                         </div>
 
                         {{-- Alt Display --}}
@@ -178,12 +158,9 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Link to your
                                                 current tier logs</span>
                                         </label>
-                                        <input type="text" name="warcraftlogs_main"
-                                            value="{{ old('warcraftlogs_main') }}" placeholder="Main"
+                                        <input type="text" readonly name="warcraftlogs_main"
+                                            value="{{ $form->warcraftlogs_main }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('warcraftlogs_main')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -193,12 +170,9 @@
                                             <span class="label-text text-[16px] text-white opacity-0">Link to your
                                                 current tier logs</span>
                                         </label>
-                                        <input type="text" name="warcraftlogs_alt"
-                                            value="{{ old('warcraftlogs_alt') }}" placeholder="Alt"
+                                        <input type="text" readonly name="warcraftlogs_alt"
+                                            value="{{ $form->warcraftlogs_alt }}" placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('warcraftlogs_alt')
-                                            <p class="text-red-500 text-xs mt-1 ">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                             </tr>
@@ -210,12 +184,9 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Link to your
                                                 raiderio page</span>
                                         </label>
-                                        <input type="text" name="raiderio_main"
-                                            value="{{ old('raiderio_main') }}" placeholder="Main"
+                                        <input type="text" readonly name="raiderio_main"
+                                            value="{{ $form->raiderio_main }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('raiderio_main')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -225,12 +196,9 @@
                                             <span class="label-text text-[16px] text-white opacity-0">Link to your
                                                 raiderio page</span>
                                         </label>
-                                        <input type="text" name="raiderio_alt" value="{{ old('raiderio_alt') }}"
-                                            placeholder="Alt"
+                                        <input type="text" readonly name="raiderio_alt"
+                                            value="{{ $form->raiderio_alt }}" placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('raiderio_alt')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                             </tr>
@@ -242,12 +210,9 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Link to your WoW
                                                 Armory</span>
                                         </label>
-                                        <input type="text" name="wow_armory_main"
-                                            value="{{ old('wow_armory_main') }}" placeholder="Main"
+                                        <input type="text" readonly name="wow_armory_main"
+                                            value="{{ $form->wow_armory_main }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('wow_armory_main')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                                 <td>
@@ -257,12 +222,9 @@
                                             <span class="label-text text-[16px] text-white opacity-0">Link to your WoW
                                                 Armory</span>
                                         </label>
-                                        <input type="text" name="wow_armory_alt"
-                                            value="{{ old('wow_armory_alt') }}" placeholder="Alt"
+                                        <input type="text" readonly name="wow_armory_alt"
+                                            value="{{ $form->wow_armory_alt }}" placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                                        @error('wow_armory_alt')
-                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                        @enderror
                                     </div>
                                 </td>
                             </tr>
@@ -282,11 +244,8 @@
                                         tier
                                         logs</span>
                                 </label>
-                                <input type="text" name="warcraftlogs" value="{{ old('warcraftlogs') }}"
+                                <input type="text" readonly name="warcraftlogs" value="{{ $form->warcraftlogs }}"
                                     class="input input-bordered" />
-                                @error('warcraftlogs')
-                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             {{-- No Alt Raiderio --}}
@@ -295,11 +254,8 @@
                                     <span class="label-text text-[16px] text-white opacity-80">Link to your raiderio
                                         page</span>
                                 </label>
-                                <input type="text" name="raiderio" value="{{ old('raiderio') }}"
+                                <input type="text" readonly name="raiderio" value="{{ $form->raiderio }}"
                                     class="input input-bordered" />
-                                @error('raiderio')
-                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                @enderror
                             </div>
 
                             {{-- No Alt Armory --}}
@@ -308,11 +264,8 @@
                                     <span class="label-text text-[16px] text-white opacity-80">Link to your WoW
                                         Armory</span>
                                 </label>
-                                <input type="text" name="wow_armory" value="{{ old('wow_armory') }}"
+                                <input type="text" readonly name="wow_armory" value="{{ $form->wow_armory }}"
                                     class="input input-bordered" />
-                                @error('wow_armory')
-                                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                                @enderror
                             </div>
                         </div>
 
@@ -325,11 +278,7 @@
                                     or anything that we need to know about that can prevent you from raiding in the
                                     foreseeable future?</span>
                             </label>
-                            <input type="text" name="plans" value="{{ old('plans') }}"
-                                class="input input-bordered" />
-                            @error('plans')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
+                            <textarea readonly class="textarea textarea-bordered text-base" placeholder="Bio"> {{ $form->plans }}</textarea>
                         </div>
 
                         {{-- History --}}
@@ -338,11 +287,7 @@
                                 <span class="label-text text-[16px] text-white opacity-80">What is your raid and guild
                                     history and reasons for leaving? Why did you choose us?</span>
                             </label>
-                            <input type="text" name="history" value="{{ old('history') }}"
-                                class="input input-bordered" />
-                            @error('history')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
+                            <textarea readonly class="textarea textarea-bordered text-base" placeholder="Bio"> {{ $form->history }}</textarea>
                         </div>
 
                         {{-- Why --}}
@@ -351,11 +296,7 @@
                                 <span class="label-text text-[16px] text-white opacity-80">Why should we pick you? How
                                     do you stand out from other applicants?</span>
                             </label>
-                            <input type="text" name="pick" value="{{ old('pick') }}"
-                                class="input input-bordered" />
-                            @error('pick')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
+                            <textarea readonly class="textarea textarea-bordered text-base" placeholder="Bio"> {{ $form->pick }}</textarea>
                         </div>
 
                         {{-- Additional --}}
@@ -364,21 +305,34 @@
                                 <span class="label-text text-[16px] text-white opacity-80">Anything else you'd like us
                                     to know?</span>
                             </label>
-                            <input type="text" name="additional" value="{{ old('additional') }}"
-                                class="input input-bordered" />
-                            @error('additional')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
+                            <textarea readonly class="textarea textarea-bordered text-base" placeholder="Bio"> {{ $form->additional }}</textarea>
                         </div>
+                </form>
+                <table class="mt-6">
+                    <tr>
+                        <td class=" w-56">
+                            <div class="form-control">
+                                <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+                            </div>
+                        </td>
+                        <td class="w-56">
+                            <form method="POST" action="/dashboard/form/{{ $form->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <div class="form-control">
+                                    <button class="btn btn-primary bg-red-700 bg-opacity-90 hover:bg-red-600 w-auto">Delete</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                </table>
 
-                        <div class="form-control mt-6">
-                            <button class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
             </div>
         </div>
+
     </div>
+    </div>
+
 </x-layout>
 
 <script>

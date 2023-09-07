@@ -14,14 +14,15 @@ class FormController extends Controller
     }
 
     // Store Form Data
-    // NEEDS TO BE SET UP PROPERLY
     public function store(Request $request) {
         $formFields = $request->validate([
             'country' => 'required',
             'age' => ['required'],
 
             'character_name' => 'required',
-            'role' => 'required',
+            'character_realm' => 'required',
+            'class' => 'required',
+            'spec' => 'required',
 
             'battle_net_tag' => 'required',
             'discord_tag' => 'required',
@@ -69,5 +70,21 @@ class FormController extends Controller
         Form::create($formFields);
 
         return redirect('/')->with('message', 'Form submitted successfully!');
+    }
+
+    // Show Forms on Dashboard Page
+    public function show() {
+        return view('/forms/show', ['forms' => Form::latest()->filter(request(['tag', 'search']))->paginate(2)]);
+    }
+
+    // Show Single Form Page
+    public function single(Form $form) {
+        return view('/forms/single', ['form'=>$form]);
+    }
+
+    // Delete Single Form
+    public function destroy(Form $form) {
+        $form->delete();
+        return redirect('/forms')->with('message', 'Form has been deleted successfully');
     }
 }

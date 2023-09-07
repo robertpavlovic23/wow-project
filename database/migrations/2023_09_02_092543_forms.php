@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('age');
 
             $table->string('character_name');
-            $table->string('role');
+            $table->string('character_realm');
+            $table->string('class');
+            $table->string('spec');
             
             // social
             $table->string('battle_net_tag');
