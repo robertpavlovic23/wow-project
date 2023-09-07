@@ -31,6 +31,9 @@ class UserController extends Controller
         // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
 
+        // Assing Role to User
+        $formFields['role_id'] = "";
+        
         // Create User
         $user = User::create($formFields);
 
@@ -78,10 +81,12 @@ class UserController extends Controller
     public function update(Request $request) {
         // Pulling data for user in session
         $user = User::find(auth()->user()->id);
+        //$user = auth()->user();
 
         // Compare Password Input vs Hash Password from Database 'users'
         if(Hash::check($request->input('oldPassword'), $user->password) == false) {
-            abort(403, 'Wrong password');
+            //abort(403, 'Wrong password');
+            return back()->with('error', 'Wrong password.');
         }
 
         if($request->input('password') != $request->input('password_confirmation')) {
@@ -110,5 +115,27 @@ class UserController extends Controller
         //$user->update($formFields);
 
         return redirect('/')->with('message', 'User updated');
+    }
+
+    // Delete Single User
+    public function destroy(Request $request, User $user) {
+        auth()->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        $user->delete();
+        return redirect('/register')->with('message', 'You have deleted your account successfully.');
+    }
+
+    // Delete Single User From Admin Panel
+    public function destroyAdmin(Request $request, User $user) {
+        $user->delete();
+        return redirect('/admin')->with('message', 'You have deleted the user account successfully.');
+    }
+
+    // Show Admin Panel
+    public function admin() {
+        return view('/admin/admin-dashboard', ['users' => User::all()]);
     }
 }

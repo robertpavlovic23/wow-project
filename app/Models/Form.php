@@ -13,7 +13,9 @@ class Form extends Model
         'country',
         'age',
         'character_name',
-        'role',
+        'character_realm',
+        'class',
+        'spec',
         'battle_net_tag',
         'discord_tag',
         'ui_vod',
@@ -28,4 +30,16 @@ class Form extends Model
         'wow_armory',
         'wow_armory_alt'
     ];
+
+    public function scopeFilter($query, array $filters) {
+        if($filters['tag'] ?? false) {
+            $query->where('class', 'like', '%' . request('tag') . '%');
+        }
+
+        if($filters['search'] ?? false) {
+            $query->where('class', 'like', '%' . request('search') . '%')
+                ->orWhere('spec', 'like', '%' . request('search') . '%')
+                ->orWhere('character_name', 'like', '%' . request('search') . '%');
+        }
+    }
 }

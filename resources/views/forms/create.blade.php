@@ -8,7 +8,7 @@
             </div>
             <div class="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
                 <div class="card-body">
-                    <form action="/form/create" method="POST">
+                    <form action="/forms/create" method="POST">
                         @csrf
                         {{-- Country , Age --}}
                         <table>
@@ -72,30 +72,67 @@
                             </tr>
                         </table>
 
-                        {{-- Character name --}}
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text text-[16px] text-white opacity-80">Character name - Realm</span>
-                            </label>
-                            <input type="text" name="character_name" placeholder="Example: Zmaito-TarrenMill"
-                                value="{{ old('character_name') }}"
-                                class="input input-bordered placeholder:text-sm placeholder-gray-500" />
-                            @error('character_name')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        {{-- Character name , realm --}}
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-control">
+                                        <label class="label">
+                                            <span class="label-text text-[16px] text-white opacity-80">Character
+                                                name</span>
+                                        </label>
+                                        <input type="text" name="character_name" value="{{ old('character_name') }}"
+                                            class="input input-bordered" />
+                                        @error('character_name')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-control">
+                                        <label class="label">
+                                            <span class="label-text text-[16px] text-white opacity-80">Realm</span>
+                                        </label>
+                                        <input type="text" name="character_realm"
+                                            value="{{ old('character_realm') }}" class="input input-bordered" />
+                                        @error('character_realm')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
-                        {{-- Class --}}
-                        <div class="form-control">
-                            <label class="label">
-                                <span class="label-text text-[16px] text-white opacity-80">Class + Spec</span>
-                            </label>
-                            <input type="text" name="role" value="{{ old('role') }}"
-                                class="input input-bordered" />
-                            @error('role')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                            @enderror
-                        </div>
+
+                        {{-- Class , Spec --}}
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="form-control">
+                                        <label class="label">
+                                            <span class="label-text text-[16px] text-white opacity-80">Class</span>
+                                        </label>
+                                        <input type="text" name="class" placeholder="Example: Warrior" value="{{ old('class') }}"
+                                            class="input input-bordered placeholder:text-sm placeholder-gray-500" />
+                                        @error('class')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="form-control">
+                                        <label class="label">
+                                            <span class="label-text text-[16px] text-white opacity-80">Spec</span>
+                                        </label>
+                                        <input type="text" name="spec" placeholder="Example: Arms/Fury" value="{{ old('spec') }}"
+                                            class="input input-bordered placeholder:text-sm placeholder-gray-500" />
+                                        @error('spec')
+                                            <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
 
                         <div class="divider"></div>
 
@@ -141,7 +178,8 @@
                                             <span class="label-text text-[16px] text-white opacity-80">Link to your
                                                 current tier logs</span>
                                         </label>
-                                        <input type="text" name="warcraftlogs_main" value="{{ old('warcraftlogs_main') }}" placeholder="Main"
+                                        <input type="text" name="warcraftlogs_main"
+                                            value="{{ old('warcraftlogs_main') }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('warcraftlogs_main')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -155,7 +193,8 @@
                                             <span class="label-text text-[16px] text-white opacity-0">Link to your
                                                 current tier logs</span>
                                         </label>
-                                        <input type="text" name="warcraftlogs_alt" value="{{ old('warcraftlogs_alt') }}" placeholder="Alt"
+                                        <input type="text" name="warcraftlogs_alt"
+                                            value="{{ old('warcraftlogs_alt') }}" placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('warcraftlogs_alt')
                                             <p class="text-red-500 text-xs mt-1 ">{{ $message }}</p>
@@ -168,9 +207,11 @@
                                     {{-- Main Raiderio --}}
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text text-[16px] text-white opacity-80">Link to your raiderio page</span>
+                                            <span class="label-text text-[16px] text-white opacity-80">Link to your
+                                                raiderio page</span>
                                         </label>
-                                        <input type="text" name="raiderio_main" value="{{ old('raiderio_main') }}" placeholder="Main"
+                                        <input type="text" name="raiderio_main"
+                                            value="{{ old('raiderio_main') }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('raiderio_main')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -181,9 +222,11 @@
                                     {{-- Alt Raiderio --}}
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text text-[16px] text-white opacity-0">Link to your raiderio page</span>
+                                            <span class="label-text text-[16px] text-white opacity-0">Link to your
+                                                raiderio page</span>
                                         </label>
-                                        <input type="text" name="raiderio_alt" value="{{ old('raiderio_alt') }}" placeholder="Alt"
+                                        <input type="text" name="raiderio_alt" value="{{ old('raiderio_alt') }}"
+                                            placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('raiderio_alt')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -196,9 +239,11 @@
                                     {{-- Main Armory --}}
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text text-[16px] text-white opacity-80">Link to your WoW Armory</span>
+                                            <span class="label-text text-[16px] text-white opacity-80">Link to your WoW
+                                                Armory</span>
                                         </label>
-                                        <input type="text" name="wow_armory_main" value="{{ old('wow_armory_main') }}" placeholder="Main"
+                                        <input type="text" name="wow_armory_main"
+                                            value="{{ old('wow_armory_main') }}" placeholder="Main"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('wow_armory_main')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -209,9 +254,11 @@
                                     {{-- Alt Armory --}}
                                     <div class="form-control">
                                         <label class="label">
-                                            <span class="label-text text-[16px] text-white opacity-0">Link to your WoW Armory</span>
+                                            <span class="label-text text-[16px] text-white opacity-0">Link to your WoW
+                                                Armory</span>
                                         </label>
-                                        <input type="text" name="wow_armory_alt" value="{{ old('wow_armory_alt') }}" placeholder="Alt"
+                                        <input type="text" name="wow_armory_alt"
+                                            value="{{ old('wow_armory_alt') }}" placeholder="Alt"
                                             class="input input-bordered placeholder:text-sm placeholder-gray-500" />
                                         @error('wow_armory_alt')
                                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -258,7 +305,8 @@
                             {{-- No Alt Armory --}}
                             <div class="form-control">
                                 <label class="label">
-                                    <span class="label-text text-[16px] text-white opacity-80">Link to your WoW Armory</span>
+                                    <span class="label-text text-[16px] text-white opacity-80">Link to your WoW
+                                        Armory</span>
                                 </label>
                                 <input type="text" name="wow_armory" value="{{ old('wow_armory') }}"
                                     class="input input-bordered" />
@@ -270,7 +318,7 @@
 
                         <div class="divider"></div>
 
-
+                        {{-- Plans --}}
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text text-[16px] text-white opacity-80">Are there any planned events
@@ -284,7 +332,7 @@
                             @enderror
                         </div>
 
-
+                        {{-- History --}}
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text text-[16px] text-white opacity-80">What is your raid and guild
@@ -297,7 +345,7 @@
                             @enderror
                         </div>
 
-
+                        {{-- Why --}}
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text text-[16px] text-white opacity-80">Why should we pick you? How
@@ -310,7 +358,7 @@
                             @enderror
                         </div>
 
-
+                        {{-- Additional --}}
                         <div class="form-control">
                             <label class="label">
                                 <span class="label-text text-[16px] text-white opacity-80">Anything else you'd like us

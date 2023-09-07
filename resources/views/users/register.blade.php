@@ -1,7 +1,7 @@
 <x-layout>
     <div class="hero min-h-screen bg-base-200">
         <div class="hero-content flex-col w-3/4">
-            <div class="text-center lg:text-top mt-24">
+            <div class="text-center lg:text-top mt-8">
                 <h1 class="text-5xl font-bold">Register</h1>
                 <p class="py-6"></p>
             </div>
