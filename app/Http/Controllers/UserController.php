@@ -129,7 +129,7 @@ class UserController extends Controller
     }
 
     // Delete Single User From Admin Panel
-    public function destroyAdmin(Request $request, User $user) {
+    public function destroyAdmin(User $user) {
         $user->delete();
         return redirect('/admin')->with('message', 'You have deleted the user account successfully.');
     }
