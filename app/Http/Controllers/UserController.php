@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\User;
+use App\Enums\UserRole;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +34,7 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         // Assing Role to User
-        $formFields['role_id'] = "";
+        $formFields['role'] = UserRole::Admin;
         
         // Create User
         $user = User::create($formFields);

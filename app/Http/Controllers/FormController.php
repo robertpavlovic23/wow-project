@@ -74,7 +74,7 @@ class FormController extends Controller
 
     // Show Forms on Dashboard Page
     public function show() {
-        return view('/forms/show', ['forms' => Form::latest()->filter(request(['tag', 'search']))->paginate(2)]);
+        return view('/forms/show', ['forms' => Form::latest()->filter(request(['tag', 'search']))->paginate(8)]);
     }
 
     // Show Single Form Page

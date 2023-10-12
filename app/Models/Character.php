@@ -10,14 +10,19 @@ class Character extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'player_id',
         'character_name',
         'class',
-        'spec'
+        'role',
     ];
 
-    // Relationship to User
-    public function user() {
-        return $this->belongsTo(User::class, 'user_id');
+    // // Relationship to User
+    // public function user() {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
+
+    // Relationship to Player
+    public function player() {
+        return $this->belongsTo(Player::class, 'player_id');
     }
 }

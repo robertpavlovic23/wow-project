@@ -4,7 +4,7 @@
     <th>{{ $character->id }}</th>
     <td>{{ $character->character_name }}</td>
     <td>{{ $character->class }}</td>
-    <td>{{ $character->spec }}</td>
+    <td>{{ $character->role }}</td>
     <td>{{ $character->user_id }}</td>
     <form method="POST" action="/character/destroy/{{ $character->id }}">
         @csrf
