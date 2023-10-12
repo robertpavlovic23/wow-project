@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/css/app.css')
+    @livewireStyles
     <title>Document</title>
 </head>
 
@@ -69,16 +70,19 @@
                                 </svg>
                             </label></li>
                         @auth
-                            <li><a href="/profile">Profile</a></li>
+                            <li><a href="/profile" wire:navigate>Profile</a></li>
                             <li>
                                 <details closed>
-                                    <summary><a href="/forms">Dashboards</a></summary>
+                                    <summary><a href="/forms" wire:navigate>Dashboards</a></summary>
                                     <ul>
-                                        @if (auth()->check() && auth()->user()->role_id === '1')
-                                            <li><a href="/admin">Admin Panel</a></li>
-                                            <li><a href="/forms">Forms</a></li>
+                                        {{-- @if (auth()->check() && auth()->user()->role === App\Enums\UserRole::HeadAdmin->name) --}}
+                                        @if (auth()->check() && auth()->user()->role <= 2)
+                                            @if (auth()->check() && auth()->user()->role === 1)
+                                            <li><a href="/admin" wire:navigate>Admin Panel</a></li>
+                                            @endif
+                                            <li><a href="/forms" wire:navigate>Forms</a></li>
                                         @endif
-                                        <li><a href="/raid-planner">Raid planner</a></li>
+                                        <li><a href="/raid-planner" wire:navigate>Raid planner</a></li>
                                     </ul>
                                 </details>
                             </li>
@@ -89,8 +93,8 @@
                                 </li>
                             </form>
                         @else
-                            <li><a href="/login" class="text-[16px]">Login</a></li>
-                            <li><a href="/register" class="text-[16px]">Register</a></li>
+                            <li><a href="/login" wire:navigate class="text-[16px]">Login</a></li>
+                            <li><a href="/register" wire:navigate class="text-[16px]">Register</a></li>
                         @endauth
                     </ul>
                 </div>
@@ -99,8 +103,8 @@
 
         {{-- Navbar Center --}}
         <div class="navbar-center">
-            <a href="/" class="btn btn-ghost normal-case text-xl">Home</a>
-            <a href="/form" class="btn btn-ghost normal-case text-xl">Application Form</a>
+            <a href="/" wire:navigate class="btn btn-ghost normal-case text-xl">Home</a>
+            <a href="/form" wire:navigate class="btn btn-ghost normal-case text-xl">Application Form</a>
         </div>
 
         {{-- NavBar End --}}
@@ -134,6 +138,7 @@
         </div>
     </footer>
     <x-flash-message />
+    
 </body>
-
+@livewireScripts
 </html>

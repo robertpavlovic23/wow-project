@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Enums\UserRole;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class AdminMiddleware
+class AdminRole
 {
     /**
      * Handle an incoming request.
@@ -15,12 +16,10 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->check() && auth()->user()->role_id === '1') {
+        if (auth()->check() && auth()->user()->role <= UserRole::Admin->value) {
             return $next($request);
         } else {
             return redirect('/');
         }
-
-        
     }
 }

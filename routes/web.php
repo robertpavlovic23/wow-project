@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CharacterController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RaidPlannerController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,7 @@ Route::get('/', function () {
 });
 
 // Show Admin Panel
-Route::get('/admin', [UserController::class, 'admin'])->middleware('admin');
+Route::get('/admin', [UserController::class, 'admin'])->middleware('master');
 // Delete User Account From Admin Page
 Route::delete('/admin/destroy/{user}', [UserController::class, 'destroyAdmin'])->middleware('auth');
 
@@ -66,9 +67,21 @@ Route::delete('/forms/{form}', [FormController::class, 'destroy'])->middleware('
 
 
 // Show Raid Planner Page
-Route::get('/raid-planner', [RaidPlannerController::class, 'show'])->middleware('auth');
+Route::get('/raid-planner', [RaidPlannerController::class, 'show'])->middleware('guild.master');
 
 // Store New Character
-Route::post('/character/create', [CharacterController::class, 'store'])->middleware('auth');
+Route::post('/character/create', [CharacterController::class, 'store'])->middleware('guild.master');
 // Delete Selected Character
-Route::delete('/character/destroy/{character_id}', [CharacterController::class, 'destroy'])->middleware('auth');
+Route::delete('/character/destroy/{character_id}', [CharacterController::class, 'destroy'])->middleware('guild.master');
+
+// Store New Player
+Route::post('/player/create', [PlayerController::class, 'store'])->middleware('guild.master');
+
+// Insert Player into boss_player
+Route::get('/raid-planner/insert/{boss}/{player}', [RaidPlannerController::class, 'insert'])->middleware('guild.master');
+
+// Remove Player from boss_player
+Route::get('/raid-planner/delete/{boss}/{player}', [RaidPlannerController::class, 'delete'])->middleware('guild.master');
+
+// Update character_role in player
+Route::get('/raid-planner/update/{player}/{role}', [RaidPlannerController::class, 'update'])->middleware('guild.master');

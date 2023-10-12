@@ -10,7 +10,7 @@
                                 <tr>
                                     <th></th>
                                     <th>name</th>
-                                    <th>role_id</th>
+                                    <th>role</th>
                                     <th>email</th>
                                     <th>email_verified_at</th>
                                     <th>created_at</th>

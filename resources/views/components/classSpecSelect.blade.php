@@ -6,7 +6,7 @@
             </select>
         </td>
         <td>
-            <select id="specSelect" name="spec" class="select ml-4">
+            <select id="roleSelect" name="role" class="select ml-4">
 
             </select>
         </td>
@@ -68,202 +68,345 @@
             name: 'Evoker'
         },
     ]
-    const specs = [{
+    // const roles = [{
+    //         id: 1,
+    //         name: 'Arms',
+    //         classId: "Warrior"
+    //     },
+    //     {
+    //         id: 2,
+    //         name: 'Fury',
+    //         classId: "Warrior"
+    //     },
+    //     {
+    //         id: 3,
+    //         name: 'Protection',
+    //         classId: "Warrior"
+    //     },
+    //     {
+    //         id: 4,
+    //         name: 'Marksmanship',
+    //         classId: 'Hunter'
+    //     },
+    //     {
+    //         id: 5,
+    //         name: 'Beast Master',
+    //         classId: 'Hunter'
+    //     },
+    //     {
+    //         id: 6,
+    //         name: 'Survival',
+    //         classId: 'Hunter'
+    //     },
+    //     {
+    //         id: 7,
+    //         name: 'Arcane',
+    //         classId: "Mage"
+    //     },
+    //     {
+    //         id: 8,
+    //         name: 'Frost',
+    //         classId: "Mage"
+    //     },
+    //     {
+    //         id: 9,
+    //         name: 'Fire',
+    //         classId: "Mage"
+    //     },
+    //     {
+    //         id: 10,
+    //         name: 'Assassination',
+    //         classId: "Rogue"
+    //     },
+    //     {
+    //         id: 11,
+    //         name: 'Outlaw',
+    //         classId: "Rogue"
+    //     },
+    //     {
+    //         id: 12,
+    //         name: 'Subtlety',
+    //         classId: "Rogue"
+    //     },
+    //     {
+    //         id: 13,
+    //         name: 'Shadow',
+    //         classId: "Priest"
+    //     },
+    //     {
+    //         id: 14,
+    //         name: 'Discipline',
+    //         classId: "Priest"
+    //     },
+    //     {
+    //         id: 15,
+    //         name: 'Holy',
+    //         classId: "Priest"
+    //     },
+    //     {
+    //         id: 16,
+    //         name: 'Demonology',
+    //         classId: "Warlock"
+    //     },
+    //     {
+    //         id: 17,
+    //         name: 'Affliction',
+    //         classId: "Warlock"
+    //     },
+    //     {
+    //         id: 18,
+    //         name: 'Destruction',
+    //         classId: "Warlock"
+    //     },
+    //     {
+    //         id: 19,
+    //         name: 'Retribution',
+    //         classId: "Paladin"
+    //     },
+    //     {
+    //         id: 20,
+    //         name: 'Holy',
+    //         classId: "Paladin"
+    //     },
+    //     {
+    //         id: 21,
+    //         name: 'Protection',
+    //         classId: "Paladin"
+    //     },
+    //     {
+    //         id: 22,
+    //         name: 'Balance',
+    //         classId: "Druid"
+    //     },
+    //     {
+    //         id: 23,
+    //         name: 'Feral',
+    //         classId: "Druid"
+    //     },
+    //     {
+    //         id: 24,
+    //         name: 'Restoration',
+    //         classId: "Druid"
+    //     },
+    //     {
+    //         id: 25,
+    //         name: 'Guardian',
+    //         classId: "Druid"
+    //     },
+    //     {
+    //         id: 26,
+    //         name: 'Enhancement',
+    //         classId: "Shaman"
+    //     },
+    //     {
+    //         id: 27,
+    //         name: 'Elemental',
+    //         classId: "Shaman"
+    //     },
+    //     {
+    //         id: 28,
+    //         name: 'Restoration',
+    //         classId: "Shaman"
+    //     },
+    //     {
+    //         id: 30,
+    //         name: 'Windwalker',
+    //         classId: "Monk"
+    //     },
+    //     {
+    //         id: 31,
+    //         name: 'Mistweaver',
+    //         classId: "Monk"
+    //     },
+    //     {
+    //         id: 32,
+    //         name: 'Brewmaster',
+    //         classId: "Monk"
+    //     },
+    //     {
+    //         id: 33,
+    //         name: 'Havoc',
+    //         classId: "Demon Hunter"
+    //     },
+    //     {
+    //         id: 34,
+    //         name: 'Vengeance',
+    //         classId: "Demon Hunter"
+    //     },
+    //     {
+    //         id: 35,
+    //         name: 'Unholy',
+    //         classId: "Death Knight"
+    //     },
+    //     {
+    //         id: 36,
+    //         name: 'Frost',
+    //         classId: "Death Knight"
+    //     },
+    //     {
+    //         id: 37,
+    //         name: 'Blood',
+    //         classId: "Death Knight"
+    //     },
+    //     {
+    //         id: 38,
+    //         name: 'Devastation',
+    //         classId: "Evoker"
+    //     },
+    //     {
+    //         id: 39,
+    //         name: 'Augmentation',
+    //         classId: "Evoker"
+    //     },
+    //     {
+    //         id: 40,
+    //         name: 'Preservation',
+    //         classId: "Evoker"
+    //     },
+    // ]
+
+        const roles = [{
             id: 1,
-            name: 'Arms',
-            classId: "Warrior"
-        },
-        {
+            name: 'Tank',
+            classId: 'Warrior'
+            },
+            {
             id: 2,
-            name: 'Fury',
-            classId: "Warrior"
-        },
-        {
+            name: 'Melee',
+            classId: 'Warrior'
+            },
+            {
             id: 3,
-            name: 'Protection',
-            classId: "Warrior"
-        },
-        {
+            name: 'Ranged',
+            classId: 'Hunter'
+            },
+            {
             id: 4,
-            name: 'Marksmanship',
+            name: 'Melee',
             classId: 'Hunter'
-        },
-        {
+            },
+            {
             id: 5,
-            name: 'Beast Master',
-            classId: 'Hunter'
-        },
-        {
+            name: 'Ranged',
+            classId: 'Mage'
+            },
+            {
             id: 6,
-            name: 'Survival',
-            classId: 'Hunter'
-        },
-        {
+            name: 'Melee',
+            classId: 'Rogue'
+            },
+            {
             id: 7,
-            name: 'Arcane',
-            classId: "Mage"
-        },
-        {
+            name: 'Healer',
+            classId: 'Priest'
+            },
+            {
             id: 8,
-            name: 'Frost',
-            classId: "Mage"
-        },
-        {
+            name: 'Ranged',
+            classId: 'Priest'
+            },
+            {
             id: 9,
-            name: 'Fire',
-            classId: "Mage"
-        },
-        {
+            name: 'Ranged',
+            classId: 'Warlock'
+            },
+            {
             id: 10,
-            name: 'Assassination',
-            classId: "Rogue"
-        },
-        {
+            name: 'Tank',
+            classId: 'Paladin'
+            },
+            {
             id: 11,
-            name: 'Outlaw',
-            classId: "Rogue"
-        },
-        {
+            name: 'Healer',
+            classId: 'Paladin'
+            },
+            {
             id: 12,
-            name: 'Subtlety',
-            classId: "Rogue"
-        },
-        {
+            name: 'Melee',
+            classId: 'Paladin'
+            },
+            {
             id: 13,
-            name: 'Shadow',
-            classId: "Priest"
-        },
-        {
+            name: 'Tank',
+            classId: 'Druid'
+            },
+            {
             id: 14,
-            name: 'Discipline',
-            classId: "Priest"
-        },
-        {
+            name: 'Healer',
+            classId: 'Druid'
+            },
+            {
             id: 15,
-            name: 'Holy',
-            classId: "Priest"
-        },
-        {
+            name: 'Ranged',
+            classId: 'Druid'
+            },
+            {
             id: 16,
-            name: 'Demonology',
-            classId: "Warlock"
-        },
-        {
+            name: 'Melee',
+            classId: 'Druid'
+            },
+            {
             id: 17,
-            name: 'Affliction',
-            classId: "Warlock"
-        },
-        {
+            name: 'Healer',
+            classId: 'Shaman'
+            },
+            {
             id: 18,
-            name: 'Destruction',
-            classId: "Warlock"
-        },
-        {
+            name: 'Ranged',
+            classId: 'Shaman'
+            },
+            {
             id: 19,
-            name: 'Retribution',
-            classId: "Paladin"
-        },
-        {
+            name: 'Melee',
+            classId: 'Shaman'
+            },
+            {
             id: 20,
-            name: 'Holy',
-            classId: "Paladin"
-        },
-        {
+            name: 'Tank',
+            classId: 'Monk'
+            },
+            {
             id: 21,
-            name: 'Protection',
-            classId: "Paladin"
-        },
-        {
+            name: 'Healer',
+            classId: 'Monk'
+            },
+            {
             id: 22,
-            name: 'Balance',
-            classId: "Druid"
-        },
-        {
+            name: 'Melee',
+            classId: 'Monk'
+            },
+            {
             id: 23,
-            name: 'Feral',
-            classId: "Druid"
-        },
-        {
+            name: 'Tank',
+            classId: 'Demon Hunter'
+            },
+            {
             id: 24,
-            name: 'Restoration',
-            classId: "Druid"
-        },
-        {
+            name: 'Melee',
+            classId: 'Demon Hunter'
+            },
+            {
             id: 25,
-            name: 'Guardian',
-            classId: "Druid"
-        },
-        {
+            name: 'Tank',
+            classId: 'Death Knight'
+            },
+            {
             id: 26,
-            name: 'Enhancement',
-            classId: "Shaman"
-        },
-        {
+            name: 'Melee',
+            classId: 'Death Knight'
+            },
+            {
             id: 27,
-            name: 'Elemental',
-            classId: "Shaman"
-        },
-        {
+            name: 'Healer',
+            classId: 'Evoker'
+            },
+            {
             id: 28,
-            name: 'Restoration',
-            classId: "Shaman"
-        },
-        {
-            id: 30,
-            name: 'Windwalker',
-            classId: "Monk"
-        },
-        {
-            id: 31,
-            name: 'Mistweaver',
-            classId: "Monk"
-        },
-        {
-            id: 32,
-            name: 'Brewmaster',
-            classId: "Monk"
-        },
-        {
-            id: 33,
-            name: 'Havoc',
-            classId: "Demon Hunter"
-        },
-        {
-            id: 34,
-            name: 'Vengeance',
-            classId: "Demon Hunter"
-        },
-        {
-            id: 35,
-            name: 'Unholy',
-            classId: "Death Knight"
-        },
-        {
-            id: 36,
-            name: 'Frost',
-            classId: "Death Knight"
-        },
-        {
-            id: 37,
-            name: 'Blood',
-            classId: "Death Knight"
-        },
-        {
-            id: 38,
-            name: 'Devastation',
-            classId: "Evoker"
-        },
-        {
-            id: 39,
-            name: 'Augmentation',
-            classId: "Evoker"
-        },
-        {
-            id: 40,
-            name: 'Preservation',
-            classId: "Evoker"
-        },
-    ]
+            name: 'Ranged',
+            classId: 'Evoker'
+            },
+            
+        ]
 
 
     function renderClasses() {
@@ -272,14 +415,14 @@
         select.innerHTML = optionsHTML.join('');
     }
 
-    function renderSpecs(specs) {
-        const select = document.querySelector('#specSelect');
-        const optionsHTML = specs.map(spec => `<option value="${spec.name}">${spec.name}</option>`);
+    function renderRoles(roles) {
+        const select = document.querySelector('#roleSelect');
+        const optionsHTML = roles.map(role => `<option value="${role.name}">${role.name}</option>`);
         select.innerHTML = optionsHTML.join('');
     }
 
     renderClasses();
-    renderSpecs(specs);
+    //renderRoles(roles);
 
     //const selectedClassId = 1
     //const selectedClassSpecs = specs.filter(spec => spec.classId === selectedClassId)
@@ -287,8 +430,8 @@
     document.querySelector('#classSelect').addEventListener('change', event => {
         const selectedClassId = event.target.value;
         // const selectedClassSpecs = selectedClassId ? specs.filter(spec => spec.classId === parseInt(selectedClassId)) : specs;
-        const selectedClassSpecs = selectedClassId ? specs.filter(spec => spec.classId ===
-            selectedClassId) : specs;
-        renderSpecs(selectedClassSpecs);
+        const selectedClassRoles = selectedClassId ? roles.filter(role => role.classId ===
+            selectedClassId) : roles;
+        renderRoles(selectedClassRoles);
     });
 </script>
