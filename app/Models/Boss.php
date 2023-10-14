@@ -22,7 +22,7 @@ class Boss extends Model
 
     // Relationship to Player
     public function players() {
-        return $this->belongsToMany(Player::class, 'boss_player', 'boss_id', 'player_id')->withPivot('role');
+        return $this->belongsToMany(Player::class, 'boss_player', 'boss_id', 'player_id')->withPivot('role', 'class');
     }
 
     // Relationship to Character

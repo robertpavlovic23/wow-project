@@ -11,9 +11,9 @@ class Character extends Model
 
     protected $fillable = [
         'player_id',
-        'character_name',
+        'name',
         'class',
-        'role',
+        'spec',
     ];
 
     // // Relationship to User

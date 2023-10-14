@@ -1,7 +1,7 @@
 <div>
     @if (session()->has('message'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2">
+            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2 z-50">
             <div class="alert alert-info">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="stroke-current shrink-0 w-6 h-6">
@@ -15,7 +15,7 @@
 
     @if (session()->has('success'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2">
+            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2 z-50">
             <div class="alert alert-success">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="stroke-current shrink-0 w-6 h-6">
@@ -29,7 +29,7 @@
 
     @if (session()->has('error'))
         <div x-data="{ show: true }" x-init="setTimeout(() => show = false, 2000)" x-show="show"
-            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2">
+            class="fixed top-0 right-0 transform-translate-x-6 mt-[75px] mr-2 z-50">
             <div class="alert alert-error">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                     class="stroke-current shrink-0 w-6 h-6">

@@ -51,25 +51,4 @@ class RaidPlannerController extends Controller
             return redirect()->back()->with('error', 'Duplicate entry. The player is already associated with this boss.');
         }
     }
-
-    public function delete($bossId, $playerId) {
-        $boss = Boss::find($bossId);
-        $player = Player::find($playerId);
-
-        if ($boss && $player) {
-            $boss->players()->detach($player->id);
-
-            return redirect()->back()->with('success', 'Player ID removed from the boss successfully');
-        } else {
-            return redirect()->back()->with('error', 'Boss or player not found');
-        }
-    }
-
-    public function update($playerId, $characterRole) {
-        $player = Player::find($playerId);
-        
-        $player->update(['character_role' => $characterRole]);
-
-        return redirect()->back()->with('success', 'Player role changed successfully!');
-    }
 }

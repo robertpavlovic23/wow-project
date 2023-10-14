@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('player_id')->constrained()->onDelete('cascade');
 
-            $table->string('character_name');
+            $table->string('name');
             $table->string('class');
-            $table->string('role');   
+            $table->string('spec');   
             
             $table->timestamps();
         });

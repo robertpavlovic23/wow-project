@@ -84,9 +84,9 @@
                                 <label class="label">
                                     <span class="label-text text-[16px] text-white opacity-80">Name</span>
                                 </label>
-                                <input type="text" name="character_name" value="{{ old('character_name') }}"
+                                <input type="text" name="name" value="{{ old('name') }}"
                                     class="input input-bordered" />
-                                @error('character_name')
+                                @error('name')
                                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                                 @enderror
                             </div>

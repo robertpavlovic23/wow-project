@@ -1,29 +1,34 @@
 @props(['character'])
 
+<?php
+use App\Enums\ClassColor;
+?>
+
+
 @if ($character->class === 'Warrior')
-    text-yellow-800
+    {{ ClassColor::Warrior->value }}
 @elseif($character->class === 'Hunter')
-    text-green-500
+    {{ ClassColor::Hunter->value }}
 @elseif($character->class === 'Mage')
-    text-cyan-400
+    {{ ClassColor::Mage->value }}
 @elseif($character->class === 'Rogue')
-    text-yellow-300
+    {{ ClassColor::Rogue->value }}
 @elseif($character->class === 'Priest')
-    text-white
+    {{ ClassColor::Priest->value }}
 @elseif($character->class === 'Warlock')
-    text-purple-400
+    {{ ClassColor::Warlock->value }}
 @elseif($character->class === 'Paladin')
-    text-pink-300
+    {{ ClassColor::Paladin->value }}
 @elseif($character->class === 'Druid')
-    text-orange-500
+    {{ ClassColor::Druid->value }}
 @elseif($character->class === 'Shaman')
-    text-blue-600
+    {{ ClassColor::Shaman->value }}
 @elseif($character->class === 'Monk')
-    text-green-300
+    {{ ClassColor::Monk->value }}
 @elseif($character->class === 'Demon Hunter')
-    text-purple-700
+    {{ ClassColor::DemonHunter->value }}
 @elseif($character->class === 'Death Knight')
-    text-red-700
+    {{ ClassColor::DeathKnight->value }}
 @else
-    text-green-700
+    {{ ClassColor::Evoker->value }}
 @endif

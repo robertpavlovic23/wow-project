@@ -11,5 +11,6 @@ class BossPlayer extends Model
 
     protected $fillable = [
         'role',
+        'class',
     ];
 }

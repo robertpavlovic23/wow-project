@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('boss_id');
             $table->unsignedBigInteger('player_id');
             $table->string('role')->nullable();
+            $table->string('class')->nullable();
 
             $table->primary((['boss_id','player_id']));
 
