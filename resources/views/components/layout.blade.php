@@ -9,6 +9,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
     @vite('resources/css/app.css')
     @livewireStyles
+    @livewireScripts
     <title>Document</title>
 </head>
 
@@ -73,16 +74,16 @@
                             <li><a href="/profile" wire:navigate>Profile</a></li>
                             <li>
                                 <details closed>
-                                    <summary><a href="/forms" wire:navigate>Dashboards</a></summary>
+                                    <summary>Dashboards</summary>
                                     <ul>
                                         {{-- @if (auth()->check() && auth()->user()->role === App\Enums\UserRole::HeadAdmin->name) --}}
                                         @if (auth()->check() && auth()->user()->role <= 2)
                                             @if (auth()->check() && auth()->user()->role === 1)
                                             <li><a href="/admin" wire:navigate>Admin Panel</a></li>
                                             @endif
-                                            <li><a href="/forms" wire:navigate>Forms</a></li>
+                                            <li><a href="/forms">Forms</a></li>
                                         @endif
-                                        <li><a href="/raid-planner" wire:navigate>Raid planner</a></li>
+                                        <li><a href="/raid-planner">Raid planner</a></li>
                                     </ul>
                                 </details>
                             </li>
@@ -104,7 +105,7 @@
         {{-- Navbar Center --}}
         <div class="navbar-center">
             <a href="/" wire:navigate class="btn btn-ghost normal-case text-xl">Home</a>
-            <a href="/form" wire:navigate class="btn btn-ghost normal-case text-xl">Application Form</a>
+            <a href="/form" class="btn btn-ghost normal-case text-xl">Application Form</a>
         </div>
 
         {{-- NavBar End --}}
@@ -140,5 +141,4 @@
     <x-flash-message />
     
 </body>
-@livewireScripts
 </html>
