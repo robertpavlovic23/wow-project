@@ -2,7 +2,7 @@
     @include('livewire.includes.flash-message')
     @unless (count($bossesQuery) == 0)
         @foreach ($bossesQuery as $boss)
-            <div class="collapse overflow-visible collapse-plus bg-base-100">
+            <div class="collapse overflow-visible collapse-plus bg-base-100 shadow-xl">
                 <input type="checkbox" checked />
                 <div class="collapse-title text-xl font-medium">{{ $boss->name }}</div>
                 <div class="collapse-content">
@@ -10,7 +10,7 @@
                         {{-- Table Boss --}}
                         <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-4 rounded gap-4">
                             {{-- Tank List --}}
-                            <div class="shadow-2xl h-full rounded-box">
+                            <div class="shadow-xl rounded-box list bg-base-200">
                                 <p class="menu-title text-2xl mt-1 -mb-2">Tank</p>
                                 <div class="divider divider-vertical mt-1 px-3"></div>
                                 <ul class="flex flex-col -mt-4" role="list">
@@ -26,7 +26,7 @@
                             </div>
 
                             {{-- Healer List --}}
-                            <div class="shadow-2xl h-full rounded-box">
+                            <div class="shadow-xl rounded-box list bg-base-200">
                                 <p class="menu-title text-2xl mt-1 -mb-2">Healer</p>
                                 <div class="divider divider-vertical mt-1 px-3"></div>
                                 <ul class="flex flex-col -mt-4" role="list">
@@ -42,7 +42,7 @@
                             </div>
 
                             {{-- Ranged List --}}
-                            <div class="shadow-2xl h-full rounded-box">
+                            <div class="shadow-xl rounded-box list bg-base-200">
                                 <p class="menu-title text-2xl mt-1 -mb-2">Ranged</p>
                                 <div class="divider divider-vertical mt-1 px-3"></div>
                                 <ul class="flex flex-col -mt-4" role="list">
@@ -58,7 +58,7 @@
                             </div>
 
                             {{-- Melee List --}}
-                            <div class="shadow-2xl h-full rounded-box">
+                            <div class="shadow-xl rounded-box list bg-base-200">
                                 <p class="menu-title text-2xl mt-1 -mb-2">Melee</p>
                                 <div class="divider divider-vertical mt-1 px-3"></div>
                                 <ul class="flex flex-col -mt-4" role="list">
@@ -77,15 +77,15 @@
                         <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-2 gap-4">
 
                             {{-- Core Raiders Table --}}
-                            <div class="rounded-box bg-base-100 shadow-2xl pb-4">
-                                <p class="menu-title text-2xl text-center rounded-box">Core Raiders</p>
+                            <div class="rounded-box bg-base-200 shadow-xl pb-4">
+                                <p class="menu-title text-2xl text-center">Core Raiders</p>
                                 <div class="divider divider-vertical mt-[1px]"></div>
                                 <table class="w-full text-center">
                                     @for ($i = 0; $i < count($playersQuery) / 4; $i++)
-                                        <tr class="rounded-box cursor-pointer divide-x-2 divide-base-200 border-base-200">
-                                            @for ($j = 0; $j < 5; $j++)
+                                        <tr class="rounded-box cursor-pointer">
+                                            @for ($j = 0; $j < 4; $j++)
                                                 @php
-                                                    $index = $i * 5 + $j; // Calculated the index in the $playersQuery array
+                                                    $index = $i * 4 + $j; // Calculated the index in the $playersQuery array
                                                     $player = $playersQuery[$index] ?? null; // Get the player at that index
                                                 @endphp
 
@@ -106,7 +106,7 @@
                             </div>
 
                             {{-- Trials Table --}}
-                            <div class="rounded-box bg-base-100 shadow-2xl pb-4">
+                            <div class="rounded-box bg-base-200 shadow-xl pb-4">
                                 <p class="menu-title text-2xl text-center rounded-box">Trials</p>
                                 <div class="divider divider-vertical mt-[1px]"></div>
                                 <table class="w-full text-center">

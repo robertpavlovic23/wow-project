@@ -13,7 +13,8 @@ class Player extends Model
         'user_id',
         'name',
         'rank',  
-        'character_role'  
+        'character_class',
+        'character_spec',  
     ];
 
     // Relationship to User

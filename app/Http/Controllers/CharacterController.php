@@ -9,28 +9,33 @@ use Illuminate\Http\Request;
 class CharacterController extends Controller
 {
     // Store Character Data
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $formFields = $request->validate([
 
             'player_id' => 'required',
-            'character_name' => 'required',
+            'name' => 'required',
             'class' => 'required',
-            'role' => 'required',
+            'spec' => 'required',
         ]);
 
         $character = Character::create($formFields);
 
         $player = Player::find($formFields['player_id']);
 
-        if($player && $player->character_role === null) {
-            $player->update(['character_role' => $character->role]);
+        if ($player && $player->character_spec === null) {
+            $player->update([
+                'character_class' => $character->class,
+                'character_spec' => $character->spec
+            ]);
         }
 
         return redirect('/raid-planner')->with('message', 'Character created successfully!');
     }
 
     // Delete Character
-    public function destroy(Character $character_id) {
+    public function destroy(Character $character_id)
+    {
         $character_id->delete();
         return redirect('/raid-planner')->with('message', 'Character deleted successfully!');
     }
