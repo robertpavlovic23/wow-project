@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('boss_player', function (Blueprint $table) {
             $table->unsignedBigInteger('boss_id');
             $table->unsignedBigInteger('player_id');
+            $table->string('role')->nullable();
 
             $table->primary((['boss_id','player_id']));
 
