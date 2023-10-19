@@ -29,6 +29,6 @@ class Player extends Model
 
     // Relationship to Boss
     public function bosses() {
-        return $this->belongsToMany(Boss::class, 'boss_player', 'player_id', 'boss_id');
+        return $this->belongsToMany(Boss::class, 'boss_player', 'player_id', 'boss_id')->withPivot('role', 'class');
     }
 }

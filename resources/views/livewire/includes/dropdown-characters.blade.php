@@ -6,7 +6,7 @@
                                 @include('livewire.includes.character-class-colors', [
                                     'character' => $character,
                                 ])"
-                wire:click.prevent="updatePlayer({{ $boss->id }}, {{ $player->id }}, {{ $character }})">
+                wire:click.prevent="updatePlayer({{ $boss->id }}, {{ $player->id }}, '{{ $character->class }}', '{{ $character->spec }}')">
                 {{ $character->class }}
                 ({{ $character->spec }})
             </a>

@@ -6,29 +6,29 @@ use App\Enums\ClassColor;
 
 
 @if ($player->pivot->class === 'Warrior')
-    {{ ClassColor::Warrior->value }}
+    text-yellow-800
 @elseif($player->pivot->class === 'Hunter')
-    {{ ClassColor::Hunter->value }}
+    text-green-500
 @elseif($player->pivot->class === 'Mage')
-    {{ ClassColor::Mage->value }}
+    text-cyan-400
 @elseif($player->pivot->class === 'Rogue')
-    {{ ClassColor::Rogue->value }}
+    text-yellow-400
 @elseif($player->pivot->class === 'Priest')
-    {{ ClassColor::Priest->value }}
+    text-white
 @elseif($player->pivot->class === 'Warlock')
-    {{ ClassColor::Warlock->value }}
+    text-purple-400
 @elseif($player->pivot->class === 'Paladin')
-    {{ ClassColor::Paladin->value }}
+    text-pink-300
 @elseif($player->pivot->class === 'Druid')
-    {{ ClassColor::Druid->value }}
+    text-orange-500
 @elseif($player->pivot->class === 'Shaman')
-    {{ ClassColor::Shaman->value }}
+    text-blue-600
 @elseif($player->pivot->class === 'Monk')
-    {{ ClassColor::Monk->value }}
+    text-green-300
 @elseif($player->pivot->class === 'Demon Hunter')
-    {{ ClassColor::DemonHunter->value }}
+    text-purple-700
 @elseif($player->pivot->class === 'Death Knight')
-    {{ ClassColor::DeathKnight->value }}
+    text-red-700
 @else
-    {{ ClassColor::Evoker->value }}
+    text-green-700
 @endif

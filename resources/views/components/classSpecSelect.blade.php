@@ -1,12 +1,14 @@
 <table class="mt-2">
     <tr>
         <td>
-            <select id="classSelect" name="class" class="select">
+            <label for="classSelect">Select Fruit:</label>
+            <select id="classSelect" wire:model="class" class="select">
 
             </select>
         </td>
         <td>
-            <select id="specSelect" name="spec" class="select ml-4">
+            <label for="specSelect">Select Fruit:</label>
+            <select id="specSelect" wire:model="spec" class="select ml-4">
 
             </select>
         </td>
