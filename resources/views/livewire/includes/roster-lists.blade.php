@@ -10,6 +10,8 @@
                     ])"
             wire:click.prevent="removePlayer({{ $boss->id }}, {{ $player->id }})">{{ $player->name }}</a>
 
+        {{-- @include('livewire.includes.testview') --}}
+
         {{-- Dropdown --}}
         <div tabindex="0"
             class="card compact dropdown-content w-64 bg-base-100 rounded-box z-50 border-2 border-base-300">

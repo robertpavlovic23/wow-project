@@ -5,30 +5,30 @@ use App\Enums\ClassColor;
 ?>
 
 
-@if ($player->character_class === 'Warrior')
-    {{ ClassColor::Warrior->value }}
+@if ($player->character_class == 'Warrior')
+    text-yellow-800
 @elseif($player->character_class === 'Hunter')
-    {{ ClassColor::Hunter->value }}
+    text-green-500
 @elseif($player->character_class === 'Mage')
-    {{ ClassColor::Mage->value }}
+    text-cyan-400
 @elseif($player->character_class === 'Rogue')
-    {{ ClassColor::Rogue->value }}
+    text-yellow-400
 @elseif($player->character_class === 'Priest')
-    {{ ClassColor::Priest->value }}
+    text-white
 @elseif($player->character_class === 'Warlock')
-    {{ ClassColor::Warlock->value }}
+    text-purple-400
 @elseif($player->character_class === 'Paladin')
-    {{ ClassColor::Paladin->value }}
+    text-pink-300
 @elseif($player->character_class === 'Druid')
-    {{ ClassColor::Druid->value }}
+    text-orange-500
 @elseif($player->character_class === 'Shaman')
-    {{ ClassColor::Shaman->value }}
+    text-blue-600
 @elseif($player->character_class === 'Monk')
-    {{ ClassColor::Monk->value }}
+    text-green-300
 @elseif($player->character_class === 'Demon Hunter')
-    {{ ClassColor::DemonHunter->value }}
+    text-purple-700
 @elseif($player->character_class === 'Death Knight')
-    {{ ClassColor::DeathKnight->value }}
+    text-red-700
 @else
-    {{ ClassColor::Evoker->value }}
+    text-green-700
 @endif

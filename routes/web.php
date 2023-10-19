@@ -76,12 +76,3 @@ Route::delete('/character/destroy/{character_id}', [CharacterController::class, 
 
 // Store New Player
 Route::post('/player/create', [PlayerController::class, 'store'])->middleware('guild.master');
-
-// Insert Player into boss_player
-Route::get('/raid-planner/insert/{boss}/{player}', [RaidPlannerController::class, 'insert'])->middleware('guild.master');
-
-// Remove Player from boss_player
-Route::get('/raid-planner/delete/{boss}/{player}', [RaidPlannerController::class, 'delete'])->middleware('guild.master');
-
-// Update character_role in player
-Route::get('/raid-planner/update/{player}/{role}', [RaidPlannerController::class, 'update'])->middleware('guild.master');
