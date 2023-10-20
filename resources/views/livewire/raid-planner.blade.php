@@ -156,9 +156,65 @@
         </div>
 
         {{-- Right Side of the Page --}}
-        <div class="2xl:col-span-3">
+        <div class="2xl:col-span-3 flex flex-col gap-4">
+
+            {{-- Edit Player --}}
+            <div class="collapse collapse-open bg-base-100">
+                <input type="checkbox" />
+                <div class="collapse-title text-xl font-medium">
+                    Edit Player
+                </div>
+                <div class="collapse-content">
+                    <form wire:submit.prevent="updatePlayerForm">
+                        @csrf
+
+                        <div class="form-control">
+                            <table>
+                                <tr>
+                                    <td>
+                                        For player:
+                                    </td>
+                                    <td>
+                                        <select wire:model="player_id" class="select ml-2 mt-[1px]">
+                                            @foreach ($playersQuery as $player)
+                                                <option value="{{ $player->id }}">{{ $player->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="label">
+                                            <span class="label-text text-[16px] text-white opacity-80">Name</span>
+                                        </label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="text" wire:model="playerFormName"
+                                            class="input input-bordered" />
+                                    </td>
+                                    <td>
+                                        <select wire:model="rankPlayerForm" class="select">
+                                            <option value="Raider">Raider</option>
+                                            <option value="Trial">Trial</option>
+                                            <option value="Social">Social</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="form-control mt-6">
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
             {{-- Add a Player --}}
-            <div class="collapse collapse-open bg-base-100 h-[240px]">
+            <div class="collapse collapse-open bg-base-100">
                 <input type="checkbox" />
                 <div class="collapse-title text-xl font-medium">
                     Add a new player
@@ -176,10 +232,16 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <input type="text" wire:model="playerName" class="input input-bordered" />
+                                        <input id="playerName" type="text" wire:model="playerAddForm.playerName"
+                                            class="input input-bordered" />
+                                        @error('playerAddForm.playerName')
+                                            <p class="text-red-500 text-xs mt-1">The player name field needs to be
+                                                filled.</p>
+                                        @enderror
                                     </td>
+
                                     <td>
-                                        <select wire:model="rank" class="select">
+                                        <select id="playerId" wire:model="playerAddForm.rank" class="select">
                                             <option value="Raider">Raider</option>
                                             <option value="Trial">Trial</option>
                                             <option value="Social">Social</option>
@@ -190,14 +252,12 @@
                         </div>
 
                         <div class="form-control mt-6">
-                            <button class="btn btn-primary" type="submit">Create</button>
+                            <button class="btn btn-primary" type="submit" onclick="clearPlayerName()">Create</button>
                         </div>
                     </form>
 
                 </div>
             </div>
-
-            <br>
 
             {{-- Add a Character --}}
             <div class="collapse collapse-open bg-base-100 h-[345px]">
@@ -206,7 +266,7 @@
                     Create a new character
                 </div>
                 <div class="collapse-content">
-                    <form wire:submit.prevent="storeCharacter">
+                    <form wire:submit="storeCharacter">
                         @csrf
 
                         <table>
@@ -215,7 +275,8 @@
                                     For player:
                                 </td>
                                 <td>
-                                    <select wire:model="player_id" class="select ml-2 mt-[1px]">
+                                    <select id="playerCharId" wire:model="characterForm.playerId" class="select ml-2 mt-[1px]">
+                                        <option selected>Select player</option>
                                         @foreach ($playersQuery as $player)
                                             <option value="{{ $player->id }}">{{ $player->name }}</option>
                                         @endforeach
@@ -228,18 +289,18 @@
                             <label class="label">
                                 <span class="label-text text-[16px] text-white opacity-80">Name</span>
                             </label>
-                            <input type="text" wire:model="characterName" value="{{ old('characterName') }}"
-                                class="input input-bordered" />
-                            @error('characterName')
-                                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                            <input id="charName" type="text" wire:model="characterForm.characterName"
+                                value="{{ old('characterForm.characterName') }}" class="input input-bordered" />
+                            @error('characterForm.characterName')
+                                <p class="text-red-500 text-xs mt-1">The character name field needs to be filled.</p>
                             @enderror
                         </div>
 
-                        {{-- <x-classSpecSelect /> --}}
                         @include('livewire.includes.class-spec-select')
 
                         <div class="form-control mt-6">
-                            <button class="btn btn-primary" type="submit">Create</button>
+                            <button class="btn btn-primary" type="submit"
+                                onClick = "clearCharName()">Create</button>
                         </div>
                     </form>
                 </div>
@@ -247,3 +308,24 @@
         </div>
     </div>
 </div>
+
+<script>
+    function clearPlayerName() {
+        const playerName = document.getElementById("playerName");
+        playerName.value = "";
+
+        const selectElement = document.getElementById("playerId");
+        selectElement.selectedIndex = 0;
+    }
+    function clearCharName() {
+        const charName = document.getElementById("charName");
+        charName.value = "";
+
+        const selectElement = document.getElementById("playerCharId");
+        selectElement.selectedIndex = 0;
+        const selectElementClass = document.getElementById("classSelect");
+        selectElementClass.selectedIndex = 0;
+        const selectElementSpec = document.getElementById("specSelect");
+        selectElementSpec.selectedIndex = -1;
+    }
+</script>

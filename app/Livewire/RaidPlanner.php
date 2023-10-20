@@ -2,61 +2,31 @@
 
 namespace App\Livewire;
 
+use App\Livewire\Forms\CharacterAddForm;
+use App\Livewire\Forms\PlayerAddForm;
 use App\Models\Boss;
 use App\Models\Character;
 use App\Models\Player;
 use Livewire\Component;
-use Illuminate\Http\Request;
-use Livewire\Attributes\Rule;
 
 class RaidPlanner extends Component
 {
-    public $playerName = '';
-    public $rank = '';
+    public PlayerAddForm $playerAddForm;
 
-    public $player_id = '';
-    public $characterName = '';
-    public $class = '';
-    public $spec = '';
+    public CharacterAddForm $characterForm;
 
-    public function storePlayer() {
-        $validated = $this->validate([
-            'playerName' => 'required',
-            'rank' => 'required',
-        ]);
-
-        Player::create([
-            'name' => $this->playerName,
-            'rank' => $this->rank,
-            'user_id' => auth()->id(),
-        ]);
-
-        $this->reset('playerName', 'rank');
-        session()->flash('success', 'Player created successfully');
+    public function storePlayer()
+    {
+        //$this->validateOnly('playerAddForm.playerName');
+        dd($this->playerAddForm);
+        $this->playerAddForm->storePlayer();
     }
 
-    public function storeCharacter() {
-        $validated = $this->validate([
-            'player_id' => 'required',
-            'characterName' => 'required',
-            'class' => 'required',
-            'spec' => 'required',
-        ]);
-
-        Character::create([
-            'player_id' => $this->player_id,
-            'name' => $this->characterName,
-            'class' => $this->class,
-            'spec' => $this->spec,
-        ]);
-
-        $this->player_id = '';
-        $this->characterName = '';
-        $this->class = '';
-        $this->spec = '';
-
-        $this->reset();
-        session()->flash('success', 'Character created successfully');
+    public function storeCharacter()
+    {
+        //$this->validateOnly('characterForm.characterName');
+        dd($this->characterForm);
+        $this->characterForm->storeCharacter();
     }
 
     public function deletePlayer($playerId)
@@ -93,7 +63,7 @@ class RaidPlanner extends Component
 
             if ($player) {
                 $playerCount = $boss->players()->where('user_id', $player->user_id)->count();
-                
+
                 if ($playerCount <= 20) {
 
                     // Insert (Convert Spec from players into Role to boss_player pivot table)
@@ -110,7 +80,7 @@ class RaidPlanner extends Component
                         //$boss->players()->attach($player->id, ['role' => 'Melee', 'class' => $player->character_class]);
                         $player->bosses()->attach($bossId, ['role' => 'Melee', 'class' => $player->character_class]);
                     }
-                    
+
                     // Rank Append
                     if ($player->rank === 'Raider' || $player->rank === 'Trial' || $player->rank === 'Social') {
                         $player->update(['rank' => $player->rank . "InRosterX" . $bossId]);
