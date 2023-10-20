@@ -1,7 +1,7 @@
 <div class="divider divider-vertical">Options</div>
 <ul class="flex flex-col border-l border-gray-700 pl-1">
     <li class="flex hover:bg-gray-800 hover:rounded-lg text-base cursor-pointer">
-        <a onclick="showDialog()" class="w-full ml-2">Edit</a>
+        <a class="w-full ml-2" wire:click.prevent="loadPlayerData({{ $player->id }})">Edit</a>
         
     </li>
     <li class="flex text-red-400 hover:bg-gray-800 hover:rounded-lg text-base cursor-pointer">
@@ -9,7 +9,7 @@
     </li>
 </ul>
 
-
+{{-- onclick="showDialog()" --}}
 <script>
     function showDialog() {
         let dialog = document.getElementById('dialog');

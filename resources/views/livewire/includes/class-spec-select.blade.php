@@ -1,7 +1,8 @@
 <table class="mt-2">
     <tr>
         <td>
-            <select id="classSelect" wire:model="class" class="select">
+            <select id="classSelect" wire:model="characterForm.class" class="select">
+                <option selected>Select a class</option>
                 <option value="Warrior">Warrior</option>
                 <option value="Hunter">Hunter</option>
                 <option value="Mage">Mage</option>
@@ -18,7 +19,7 @@
             </select>
         </td>
         <td>
-            <select id="specSelect" wire:model="spec" class="select ml-4">
+            <select id="specSelect" wire:model="characterForm.spec" class="select ml-4">
 
             </select>
         </td>
@@ -32,19 +33,19 @@
 
     // Define options for the second select based on the first select
     const options = {
-        Warrior: ['Arms', 'Fury', 'Protection'],
-        Hunter: ['Marksmanship', 'Beast Master', 'Survival'],
-        Mage: ['Arcane', 'Frost', 'Fire'],
-        Rogue: ['Assassination', 'Outlaw', 'Subtlety'],
-        Priest: ['Shadow', 'Discipline', 'Holy'],
-        Warlock: ['Demonology', 'Affliction', 'Destruction'],
-        Paladin: ['Retribution', 'Holy', 'Protection'],
-        Druid: ['Balance', 'Feral', 'Restoration', 'Guardian'],
-        Shaman: ['Enhancement', 'Elemental', 'Restoration'],
-        Monk: ['Windwalker', 'Mistweaver', 'Brewmaster'],
-        "Demon Hunter": ['Havoc', 'Vengeance'],
-        "Death Knight": ['Unholy', 'Frost', 'Blood'],
-        Evoker: ['Devastation', 'Augmentation', 'Preservation'],
+        Warrior: ['Select spec', 'Arms', 'Fury', 'Protection'],
+        Hunter: ['Select spec', 'Marksmanship', 'Beast Master', 'Survival'],
+        Mage: ['Select spec', 'Arcane', 'Frost', 'Fire'],
+        Rogue: ['Select spec', 'Assassination', 'Outlaw', 'Subtlety'],
+        Priest: ['Select spec', 'Shadow', 'Discipline', 'Holy'],
+        Warlock: ['Select spec', 'Demonology', 'Affliction', 'Destruction'],
+        Paladin: ['Select spec', 'Retribution', 'Holy', 'Protection'],
+        Druid: ['Select spec', 'Balance', 'Feral', 'Restoration', 'Guardian'],
+        Shaman: ['Select spec', 'Enhancement', 'Elemental', 'Restoration'],
+        Monk: ['Select spec', 'Windwalker', 'Mistweaver', 'Brewmaster'],
+        "Demon Hunter": ['Select spec', 'Havoc', 'Vengeance'],
+        "Death Knight": ['Select spec', 'Unholy', 'Frost', 'Blood'],
+        Evoker: ['Select spec', 'Devastation', 'Augmentation', 'Preservation'],
     };
 
     // Function to update the options of the second select

@@ -5,6 +5,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\PlayerController;
 use App\Http\Controllers\RaidPlannerController;
 use App\Http\Controllers\UserController;
+use App\Livewire\TestForm;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,12 @@ use Illuminate\Support\Facades\Route;
 // update - Update listing
 // destroy - Delete listing
 
-Route::get('/', function () {
-    return view('/home');
-});
+
+// Route::get('/', function () {
+//     return view('/home');
+// });
+
+Route::get('/', [UserController::class, 'displayPage']);
 
 // Show Admin Panel
 Route::get('/admin', [UserController::class, 'admin'])->middleware('master');
@@ -41,7 +45,7 @@ Route::get('/register', [UserController::class, 'register'])->middleware('guest'
 // Create New User
 Route::post('/users', [UserController::class, 'store'])->middleware('guest');
 // Show Login Form
-Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/login', [UserController::class, 'login'])->name('login');
 // Log In User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 // Log User Out
