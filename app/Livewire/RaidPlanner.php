@@ -18,14 +18,14 @@ class RaidPlanner extends Component
     public function storePlayer()
     {
         //$this->validateOnly('playerAddForm.playerName');
-        dd($this->playerAddForm);
+        //dd($this->playerAddForm);
         $this->playerAddForm->storePlayer();
     }
 
     public function storeCharacter()
     {
         //$this->validateOnly('characterForm.characterName');
-        dd($this->characterForm);
+        //dd($this->characterForm);
         $this->characterForm->storeCharacter();
     }
 
@@ -143,7 +143,6 @@ class RaidPlanner extends Component
 
     protected function remove($bossId, $player)
     {
-
         $rankPrefix = ['RaiderInRoster', 'TrialInRoster'];
 
         foreach ($rankPrefix as $prefix) {

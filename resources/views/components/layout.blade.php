@@ -138,7 +138,7 @@
             <p>Copyright © 2023 - All rights reserved by Robert Pavlovic</p>
         </div>
     </footer>
-    <x-flash-message />
+    {{-- <x-flash-message /> --}}
     
 </body>
 </html>
