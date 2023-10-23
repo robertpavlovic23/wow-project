@@ -2,7 +2,7 @@
     <div class="grid grid-cols-1 2xl:grid-cols-12 gap-4 space-y-4 lg:space-y-0 lg:p-36">
         {{-- Left Side of the Page --}}
         <div class="2xl:col-span-9">
-            @include('livewire.includes.flash-message')
+            {{-- @include('livewire.includes.flash-message') --}}
             @unless (count($bossesQuery) == 0)
                 @foreach ($bossesQuery as $boss)
                     <div class="collapse overflow-visible collapse-plus bg-base-100 shadow-xl">
@@ -10,7 +10,7 @@
                         <div class="collapse-title text-xl font-medium">{{ $boss->name }}</div>
                         <div class="collapse-content">
                             <div class="grid grid-cols-1 2xl:grid-cols-4 gap-16">
-                                {{-- Table Boss --}}
+                                {{-- First Row 4 Lists --}}
                                 <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-4 rounded gap-4">
                                     {{-- Tank List --}}
                                     <div class="shadow-xl rounded-box list bg-base-200">
@@ -77,35 +77,27 @@
                                     </div>
                                 </div>
 
+                                {{-- Second Row Lists --}}
                                 <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-2 gap-4">
 
                                     {{-- Core Raiders Table --}}
                                     <div class="rounded-box bg-base-200 shadow-xl pb-4">
                                         <p class="menu-title text-2xl text-center">Core Raiders</p>
                                         <div class="divider divider-vertical mt-[1px]"></div>
-                                        <table class="w-full text-center">
-                                            @for ($i = 0; $i < count($playersQuery) / 4; $i++)
-                                                <tr class="rounded-box cursor-pointer">
-                                                    @for ($j = 0; $j < 5; $j++)
-                                                        @php
-                                                            $index = $i * 5 + $j; // Calculated the index in the $playersQuery array
-                                                            $player = $playersQuery[$index] ?? null; // Get the player at that index
-                                                        @endphp
-
-                                                        @if (
-                                                            $player &&
-                                                                ($player->rank === 'Raider' ||
-                                                                    (preg_match('/^Raider/', $player->rank) &&
-                                                                        !preg_match('/^RaiderInRoster.*X' . preg_quote($boss->positionInRaid) . '/', $player->rank))))
-                                                            @include('livewire.includes.single-lists', [
-                                                                'boss' => $boss,
-                                                                'player' => $player,
-                                                            ])
-                                                        @endif
-                                                    @endfor
-                                                </tr>
-                                            @endfor
-                                        </table>
+                                        <div class="grid grid-cols-5 gap-4">
+                                            @foreach ($playersQuery as $player)
+                                                @if (
+                                                    $player &&
+                                                        ($player->rank === 'Raider' ||
+                                                            (preg_match('/^Raider/', $player->rank) &&
+                                                                !preg_match('/^RaiderInRoster.*X' . preg_quote($boss->positionInRaid) . '/', $player->rank))))
+                                                    @include('livewire.includes.single-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
 
                                     {{-- Trials Table --}}
@@ -113,12 +105,15 @@
                                         <p class="menu-title text-2xl text-center rounded-box">Trials</p>
                                         <div class="divider divider-vertical mt-[1px]"></div>
                                         <table class="w-full text-center">
+                                            @php
+                                                $tempTrial = 0;
+                                            @endphp
                                             @for ($i = 0; $i < count($playersQuery) / 4; $i++)
                                                 <tr
                                                     class="rounded-box cursor-pointer divide-x-2 divide-base-200 border-base-200">
                                                     @for ($j = 0; $j < 5; $j++)
                                                         @php
-                                                            $index = $i * 5 + $j; // Calculated the index in the $playersQuery array
+                                                            $index = $i * 5 + $j + $tempTrial; // Calculated the index in the $playersQuery array
                                                             $player = $playersQuery[$index] ?? null; // Get the player at that index
                                                         @endphp
 
@@ -131,6 +126,11 @@
                                                                 'boss' => $boss,
                                                                 'player' => $player,
                                                             ])
+                                                        @elseif($player)
+                                                            @php
+                                                                $tempTrial++;
+                                                                $j--;
+                                                            @endphp
                                                         @endif
                                                     @endfor
                                                 </tr>
@@ -275,7 +275,8 @@
                                     For player:
                                 </td>
                                 <td>
-                                    <select id="playerCharId" wire:model="characterForm.playerId" class="select ml-2 mt-[1px]">
+                                    <select id="playerCharId" wire:model="characterForm.playerId"
+                                        class="select ml-2 mt-[1px]">
                                         <option selected>Select player</option>
                                         @foreach ($playersQuery as $player)
                                             <option value="{{ $player->id }}">{{ $player->name }}</option>
@@ -317,6 +318,7 @@
         const selectElement = document.getElementById("playerId");
         selectElement.selectedIndex = 0;
     }
+
     function clearCharName() {
         const charName = document.getElementById("charName");
         charName.value = "";

@@ -1,6 +1,6 @@
 @props(['boss', 'player'])
 
-<td class="rounded-lg hover:bg-gray-700 text-xl px-5 py-2 border-b-[2px] border-base-200">
+<div class="cursor-pointer rounded-lg hover:bg-gray-700 text-xl px-5 py-2 border-b-[2px] border-base-200">
     <div class="dropdown dropdown-hover">
         <a class="w-full 
             {{ view('livewire.includes.player-class-colors', [
@@ -21,4 +21,4 @@
             </div>
         </div>
     </div>
-</td>
+</div>

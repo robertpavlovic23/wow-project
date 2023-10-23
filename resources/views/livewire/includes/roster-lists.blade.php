@@ -4,11 +4,12 @@
     <div class="dropdown dropdown-hover">
 
         {{-- Player Name --}}
-        <a class="w-full
-                    @include('livewire.includes.roster-class-colors', [
-                        'player' => $player,
-                    ])"
-            wire:click.prevent="removePlayer({{ $boss->id }}, {{ $player->id }})">{{ $player->name }}</a>
+        <button type="button"
+            class="w-full 
+        {{ view('livewire.includes.player-class-colors', [
+            'player' => $player,
+        ]) }}"
+            wire:click="removePlayer({{ $boss->id }}, {{ $player->id }})">{{ $player->name }}</button>
 
         {{-- @include('livewire.includes.testview') --}}
 
