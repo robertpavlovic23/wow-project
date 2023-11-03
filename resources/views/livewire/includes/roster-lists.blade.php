@@ -1,7 +1,7 @@
 @props(['boss', 'player'])
 
-<li class="text-xl rounded-lg hover:bg-gray-700 p-2 pl-4 cursor-pointer">
-    <div class="dropdown dropdown-hover">
+<div class="text-xl rounded-lg hover:bg-gray-700 py-3 cursor-pointer text-center">
+    <div class="dropdown dropdown-hover text-left">
 
         {{-- Player Name --}}
         <button type="button"
@@ -26,4 +26,4 @@
             </div>
         </div>
     </div>
-</li>
+</div>

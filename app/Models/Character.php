@@ -14,6 +14,7 @@ class Character extends Model
         'name',
         'class',
         'spec',
+        'icon',
     ];
 
     // // Relationship to User
