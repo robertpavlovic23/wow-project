@@ -12,7 +12,6 @@ class Boss extends Model
     protected $fillable = [
         'raid_id',
         'name',
-        'positionInRaid',
     ];
 
     // Relationship to Raid

@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('raid_id')->constrained()->onDelete('cascade');
 
             $table->string('name');
-            $table->string('positionInRaid');
 
             $table->timestamps();
         });

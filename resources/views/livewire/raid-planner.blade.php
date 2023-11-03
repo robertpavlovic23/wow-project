@@ -13,10 +13,10 @@
                                 {{-- First Row 4 Lists --}}
                                 <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-4 rounded gap-4">
                                     {{-- Tank List --}}
-                                    <div class="shadow-xl rounded-box list bg-base-200">
-                                        <p class="menu-title text-2xl mt-1 -mb-2">Tank</p>
+                                    <div class="shadow-xl rounded-box bg-base-200">
+                                        <p class="menu-title text-2xl mt-1 -mb-2 text-center">Tank</p>
                                         <div class="divider divider-vertical mt-1 px-3"></div>
-                                        <ul class="flex flex-col -mt-4" role="list">
+                                        <div class="grid grid-cols-1">
                                             @foreach ($boss->players as $player)
                                                 @if ($player->pivot->role === 'Tank' && $player->user_id == auth()->user()->id)
                                                     @include('livewire.includes.roster-lists', [
@@ -25,14 +25,24 @@
                                                     ])
                                                 @endif
                                             @endforeach
-                                        </ul>
+                                        </div>
+                                        {{-- <ul class="flex flex-col -mt-4" role="list">
+                                            @foreach ($boss->players as $player)
+                                                @if ($player->pivot->role === 'Tank' && $player->user_id == auth()->user()->id)
+                                                    @include('livewire.includes.roster-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </ul> --}}
                                     </div>
 
                                     {{-- Healer List --}}
-                                    <div class="shadow-xl rounded-box list bg-base-200">
+                                    <div class="shadow-xl rounded-box bg-base-200">
                                         <p class="menu-title text-2xl mt-1 -mb-2">Healer</p>
                                         <div class="divider divider-vertical mt-1 px-3"></div>
-                                        <ul class="flex flex-col -mt-4" role="list">
+                                        <div class="grid grid-cols-1">
                                             @foreach ($boss->players as $player)
                                                 @if ($player->pivot->role === 'Healer' && $player->user_id == auth()->user()->id)
                                                     @include('livewire.includes.roster-lists', [
@@ -41,14 +51,24 @@
                                                     ])
                                                 @endif
                                             @endforeach
-                                        </ul>
+                                        </div>
+                                        {{-- <ul class="flex flex-col -mt-4" role="list">
+                                            @foreach ($boss->players as $player)
+                                                @if ($player->pivot->role === 'Healer' && $player->user_id == auth()->user()->id)
+                                                    @include('livewire.includes.roster-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </ul> --}}
                                     </div>
 
                                     {{-- Ranged List --}}
-                                    <div class="shadow-xl rounded-box list bg-base-200">
+                                    <div class="shadow-xl rounded-box bg-base-200">
                                         <p class="menu-title text-2xl mt-1 -mb-2">Ranged</p>
                                         <div class="divider divider-vertical mt-1 px-3"></div>
-                                        <ul class="flex flex-col -mt-4" role="list">
+                                        <div class="grid grid-cols-1">
                                             @foreach ($boss->players as $player)
                                                 @if ($player->pivot->role === 'Ranged' && $player->user_id == auth()->user()->id)
                                                     @include('livewire.includes.roster-lists', [
@@ -57,14 +77,24 @@
                                                     ])
                                                 @endif
                                             @endforeach
-                                        </ul>
+                                        </div>
+                                        {{-- <ul class="flex flex-col -mt-4" role="list">
+                                            @foreach ($boss->players as $player)
+                                                @if ($player->pivot->role === 'Ranged' && $player->user_id == auth()->user()->id)
+                                                    @include('livewire.includes.roster-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </ul> --}}
                                     </div>
 
                                     {{-- Melee List --}}
-                                    <div class="shadow-xl rounded-box list bg-base-200">
+                                    <div class="shadow-xl rounded-box bg-base-200">
                                         <p class="menu-title text-2xl mt-1 -mb-2">Melee</p>
                                         <div class="divider divider-vertical mt-1 px-3"></div>
-                                        <ul class="flex flex-col -mt-4" role="list">
+                                        <div class="grid grid-cols-1">
                                             @foreach ($boss->players as $player)
                                                 @if ($player->pivot->role === 'Melee' && $player->user_id == auth()->user()->id)
                                                     @include('livewire.includes.roster-lists', [
@@ -73,18 +103,28 @@
                                                     ])
                                                 @endif
                                             @endforeach
-                                        </ul>
+                                        </div>
+                                        {{-- <ul class="flex flex-col -mt-4" role="list">
+                                            @foreach ($boss->players as $player)
+                                                @if ($player->pivot->role === 'Melee' && $player->user_id == auth()->user()->id)
+                                                    @include('livewire.includes.roster-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </ul> --}}
                                     </div>
                                 </div>
 
                                 {{-- Second Row Lists --}}
-                                <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-2 gap-4">
+                                <div class="2xl:col-span-4 grid grid-cols-1 2xl:grid-cols-4 gap-4">
 
                                     {{-- Core Raiders Table --}}
-                                    <div class="rounded-box bg-base-200 shadow-xl pb-4">
+                                    <div class="rounded-box bg-base-200 shadow-xl col-span-2">
                                         <p class="menu-title text-2xl text-center">Core Raiders</p>
                                         <div class="divider divider-vertical mt-[1px]"></div>
-                                        <div class="grid grid-cols-5 gap-4">
+                                        <div class="grid grid-cols-5 -mt-4">
                                             @foreach ($playersQuery as $player)
                                                 @if (
                                                     $player &&
@@ -101,45 +141,45 @@
                                     </div>
 
                                     {{-- Trials Table --}}
-                                    <div class="rounded-box bg-base-200 shadow-xl pb-4">
+                                    <div class="rounded-box bg-base-200 shadow-xl col-span-1">
                                         <p class="menu-title text-2xl text-center rounded-box">Trials</p>
                                         <div class="divider divider-vertical mt-[1px]"></div>
-                                        <table class="w-full text-center">
-                                            @php
-                                                $tempTrial = 0;
-                                            @endphp
-                                            @for ($i = 0; $i < count($playersQuery) / 4; $i++)
-                                                <tr
-                                                    class="rounded-box cursor-pointer divide-x-2 divide-base-200 border-base-200">
-                                                    @for ($j = 0; $j < 5; $j++)
-                                                        @php
-                                                            $index = $i * 5 + $j + $tempTrial; // Calculated the index in the $playersQuery array
-                                                            $player = $playersQuery[$index] ?? null; // Get the player at that index
-                                                        @endphp
-
-                                                        @if (
-                                                            $player &&
-                                                                ($player->rank === 'Trial' ||
-                                                                    (preg_match('/^Trial/', $player->rank) &&
-                                                                        !preg_match('/^TrialInRoster.*X' . preg_quote($boss->positionInRaid) . '/', $player->rank))))
-                                                            @include('livewire.includes.single-lists', [
-                                                                'boss' => $boss,
-                                                                'player' => $player,
-                                                            ])
-                                                        @elseif($player)
-                                                            @php
-                                                                $tempTrial++;
-                                                                $j--;
-                                                            @endphp
-                                                        @endif
-                                                    @endfor
-                                                </tr>
-                                            @endfor
-                                        </table>
+                                        <div class="grid grid-cols-2 -mt-4">
+                                            @foreach ($playersQuery as $player)
+                                                @if (
+                                                    $player &&
+                                                        ($player->rank === 'Trial' ||
+                                                            (preg_match('/^Trial/', $player->rank) &&
+                                                                !preg_match('/^TrialInRoster.*X' . preg_quote($boss->positionInRaid) . '/', $player->rank))))
+                                                    @include('livewire.includes.single-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </div>
                                     </div>
 
+                                    {{-- Away Table --}}
+                                    <div class="rounded-box bg-base-200 shadow-xl col-span-1">
+                                        <p class="menu-title text-2xl text-center rounded-box">Away</p>
+                                        <div class="divider divider-vertical mt-[1px]"></div>
+                                        <div class="grid grid-cols-2 -mt-4">
+                                            @foreach ($playersQuery as $player)
+                                                @if (
+                                                    $player &&
+                                                        ($player->rank === 'Away' ||
+                                                            (preg_match('/^Away/', $player->rank) &&
+                                                                !preg_match('/^AwayInRoster.*X' . preg_quote($boss->positionInRaid) . '/', $player->rank))))
+                                                    @include('livewire.includes.single-lists', [
+                                                        'boss' => $boss,
+                                                        'player' => $player,
+                                                    ])
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -157,61 +197,6 @@
 
         {{-- Right Side of the Page --}}
         <div class="2xl:col-span-3 flex flex-col gap-4">
-
-            {{-- Edit Player --}}
-            <div class="collapse collapse-open bg-base-100">
-                <input type="checkbox" />
-                <div class="collapse-title text-xl font-medium">
-                    Edit Player
-                </div>
-                <div class="collapse-content">
-                    <form wire:submit.prevent="updatePlayerForm">
-                        @csrf
-
-                        <div class="form-control">
-                            <table>
-                                <tr>
-                                    <td>
-                                        For player:
-                                    </td>
-                                    <td>
-                                        <select wire:model="player_id" class="select ml-2 mt-[1px]">
-                                            @foreach ($playersQuery as $player)
-                                                <option value="{{ $player->id }}">{{ $player->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="label">
-                                            <span class="label-text text-[16px] text-white opacity-80">Name</span>
-                                        </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="text" wire:model="playerFormName"
-                                            class="input input-bordered" />
-                                    </td>
-                                    <td>
-                                        <select wire:model="rankPlayerForm" class="select">
-                                            <option value="Raider">Raider</option>
-                                            <option value="Trial">Trial</option>
-                                            <option value="Social">Social</option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-
-                        <div class="form-control mt-6">
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
 
             {{-- Add a Player --}}
             <div class="collapse collapse-open bg-base-100">

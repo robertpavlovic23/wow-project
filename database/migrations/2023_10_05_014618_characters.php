@@ -17,7 +17,8 @@ return new class extends Migration
 
             $table->string('name');
             $table->string('class');
-            $table->string('spec');   
+            $table->string('spec');  
+            $table->string('icon'); 
             
             $table->timestamps();
         });
