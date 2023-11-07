@@ -21,6 +21,12 @@ class PlayerController extends Controller
         return redirect('/raid-planner')->with('message', 'Player created successfully!');
     }
 
+    public function show($player_id) {
+        $playerQuery = Player::with('characters')->find($player_id);
+        //dd($playerQuery);
+        return view('player.player-edit', ['player'=>$playerQuery]);
+    }
+
     // Delete Player
     public function destroy(Player $player_id) {
         $player_id->delete();

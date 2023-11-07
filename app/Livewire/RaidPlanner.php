@@ -238,6 +238,23 @@ class RaidPlanner extends Component
         }
     }
 
+    // TBD
+    // public function showPlayerPanel($playerId)
+    // {
+    //     $player = Player::find($playerId);
+
+    //     if (!(auth()->user()->id === $player->user_id)) {
+    //         abort(403);
+    //     }
+
+    //     $this->showPlayer($player);
+    // }
+
+    // protected function showPlayer($player)
+    // {
+    //     return redirect('/player/' . $player->id);
+    // }
+
     public function render()
     {
         $user = auth()->user();
