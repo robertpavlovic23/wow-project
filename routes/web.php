@@ -80,3 +80,6 @@ Route::delete('/character/destroy/{character_id}', [CharacterController::class, 
 
 // Store New Player
 Route::post('/player/create', [PlayerController::class, 'store'])->middleware('guild.master');
+
+// Show Player Page
+Route::get('/player/{player_id}', [PlayerController::class, 'show'])->middleware('guild.master');

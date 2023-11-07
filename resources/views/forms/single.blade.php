@@ -320,7 +320,8 @@
                                 @csrf
                                 @method('DELETE')
                                 <div class="form-control">
-                                    <button class="btn btn-primary bg-red-700 bg-opacity-90 hover:bg-red-600 w-auto">Delete</button>
+                                    <button
+                                        class="btn btn-primary bg-red-700 bg-opacity-90 hover:bg-red-600 w-auto">Delete</button>
                                 </div>
                             </form>
                         </td>
